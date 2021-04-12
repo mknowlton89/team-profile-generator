@@ -1,8 +1,11 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
-const employee = require('./lib/employee');
-const manager = require('./lib/manager');
+const Employee = require('./lib/employee');
+const Engineer = require('./lib/engineer');
+const Intern = require('./lib/intern');
 const Manager = require('./lib/manager');
+
+const team = [];
 
 
 const addIntern = () => {
@@ -35,8 +38,10 @@ const addIntern = () => {
         }])
         // console.log("addEngineer was called");
         .then((answers) => {
-            // IF THEY CHOSE ENGINEER - CALL THE addEngineer
-            console.log(answers);
+            const intern = new Intern(answers.internName, answers.internID, answers.internEmail, answers.internSchool);
+
+            team.push(intern);
+
             if (answers.chooseType === "Add an Engineer") {
                 addEngineer();
             } else if (answers.chooseType === "Add an Intern") {
@@ -77,8 +82,10 @@ const addEngineer = () => {
         }])
         // console.log("addEngineer was called");
         .then((answers) => {
-            // IF THEY CHOSE ENGINEER - CALL THE addEngineer
-            console.log(answers);
+            const engineer = new Engineer(answers.engineerName, answers.engineerID, answers.engineerEmail, answers.engineerGitHub);
+
+            team.push(engineer);
+
             if (answers.chooseType === "Add an Engineer") {
                 addEngineer();
             } else if (answers.chooseType === "Add an Intern") {
@@ -90,6 +97,7 @@ const addEngineer = () => {
 }
 
 const quitProgram = () => {
+    console.log(team);
     console.log("The program has ended.");
 }
 
@@ -124,10 +132,9 @@ inquirer
         }])
     .then((answers) => {
         // IF THEY CHOSE ENGINEER - CALL THE addEngineer
-        console.log(answers);
         const manager = new Manager(answers.managerName, answers.managerID, answers.managerEmail, answers.managerNumber);
 
-        console.log(manager);
+        team.push(manager);
 
         if (answers.chooseType === "Add an Engineer") {
             addEngineer();
