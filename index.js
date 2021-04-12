@@ -1,5 +1,9 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
+const employee = require('./lib/employee');
+const manager = require('./lib/manager');
+const Manager = require('./lib/manager');
+
 
 const addIntern = () => {
     inquirer.prompt([
@@ -108,6 +112,11 @@ inquirer
             message: "What is the team manager's Email?",
         },
         {
+            type: 'input',
+            name: 'managerNumber',
+            message: "What is the team manager's office number?",
+        },
+        {
             type: 'list',
             name: 'chooseType',
             message: 'Would you like to add an Engineer, an Intern, or quit the program?',
@@ -116,6 +125,10 @@ inquirer
     .then((answers) => {
         // IF THEY CHOSE ENGINEER - CALL THE addEngineer
         console.log(answers);
+        const manager = new Manager(answers.managerName, answers.managerID, answers.managerEmail, answers.managerNumber);
+
+        console.log(manager);
+
         if (answers.chooseType === "Add an Engineer") {
             addEngineer();
         } else if (answers.chooseType === "Add an Intern") {
