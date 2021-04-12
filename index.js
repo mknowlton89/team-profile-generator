@@ -3,9 +3,23 @@ const fs = require('fs');
 const Engineer = require('./lib/engineer');
 const Intern = require('./lib/intern');
 const Manager = require('./lib/manager');
+const teamPageTemplate = require('./src/team-page-template'); // This is a function I can call and pass team into it
+const path = require("path");
+
+
+const OUTPUT_DIR = path.resolve(__dirname, "dist")
+const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const team = [];
 
+
+function createTeamHTMLPage(htmlContent) {
+    // Create the output directory if the output path doesn't exist
+    if (!fs.existsSync(OUTPUT_DIR)) {
+        fs.mkdirSync(OUTPUT_DIR)
+    }
+    fs.writeFileSync(outputPath, htmlContent, "utf-8");
+}
 
 const addIntern = () => {
     inquirer.prompt([
@@ -97,6 +111,10 @@ const addEngineer = () => {
 
 const quitProgram = () => {
     console.log(team);
+    let htmlContent = teamPageTemplate.htmlGenerator(team);
+    console.log(htmlContent);
+    createTeamHTMLPage(htmlContent);
+    // Need to take the team array and pass that into a function to build the HTML based on a template - need this to return a string of HTML for the page.
     console.log("\n");
 }
 
