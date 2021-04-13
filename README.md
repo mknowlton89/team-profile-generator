@@ -4,7 +4,7 @@
 
 This is a command line application that leverages the NPM Package Inquirer to collect information about your team and outputs a dynamic HTML page based upon your answers.
 
-<a href="">Here is a walkthru video of the application.</a>
+<a href="https://www.loom.com/share/62e46d837cf347fdbd656427bd209357">Here is a walkthru video of the application.</a>
 
 ## <h2 id="">Table of Contents</h2>
 
