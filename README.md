@@ -6,7 +6,7 @@ This is a command line application that leverages the NPM Package Inquirer to co
 
 <a href="https://www.loom.com/share/62e46d837cf347fdbd656427bd209357">Here is a walkthru video of the application.</a>
 
-<a href="">Here is a sample HTML file that was generated with this application.</a>
+<a href="https://mknowlton89.github.io/team-profile-generator/">Here is a sample HTML file that was generated with this application.</a>
 
 ## <h2 id="">Table of Contents</h2>
 
