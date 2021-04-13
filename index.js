@@ -112,7 +112,7 @@ const addEngineer = () => {
 const quitProgram = () => {
     console.log(team);
     let htmlContent = teamPageTemplate.htmlGenerator(team);
-    console.log(htmlContent);
+    // console.log(htmlContent);
     createTeamHTMLPage(htmlContent);
     // Need to take the team array and pass that into a function to build the HTML based on a template - need this to return a string of HTML for the page.
     console.log("\n");
